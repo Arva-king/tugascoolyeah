@@ -2,52 +2,127 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>To-Do List Interaktif</title>
+  <title>To-Do Elite</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="site-header">
-    <h1>Aplikasi To-Do List</h1>
-    <p class="subtitle">
-      Tambahkan tugas, tandai selesai, dan hapus tugas yang sudah tidak diperlukan.
-    </p>
+    <div class="header-content">
+        <h1>To-Do Elite</h1>
+        <button id="theme-toggle" class="btn-theme" title="Ganti Tema">🌙</button>
+    </div>
+    <p class="subtitle">Kelola tugas, waktu, dan jadwal kalender.</p>
   </header>
 
   <main class="site-main">
-    <!-- Form input tugas -->
-    <section class="card">
-      <h2>Tambah Tugas Baru</h2>
-      <form id="todo-form" class="todo-form">
-        <input
-          type="text"
-          id="todo-input"
-          placeholder="Tulis nama tugas, misalnya: Belajar JavaScript"
-        >
-        <button type="submit">Tambah</button>
-      </form>
-      <p id="error-message" class="error-message"></p>
+    
+    <div class="progress-container card">
+        <div class="progress-header">
+            <span class="progress-label">Progress Harian</span>
+            <span id="progress-text">0/0 Selesai</span>
+        </div>
+        <div class="progress-bar-track">
+            <div id="progress-fill" class="progress-bar-fill"></div>
+        </div>
+    </div>
+
+    <div class="dashboard-row">
+        
+        <section class="card form-card">
+            <h2>Buat Tugas Baru</h2>
+            <form id="todo-form" class="todo-form">
+                <div class="input-group">
+                    <input type="text" id="todo-input" placeholder="Nama tugas utama..." required>
+                    <textarea id="todo-desc" rows="2" placeholder="Tambahkan deskripsi/catatan (opsional)..."></textarea>
+                </div>
+                
+                <div class="tag-selection-container">
+                    <span class="tag-label">Label:</span>
+                    <div id="tag-container" class="tag-options"></div>
+                </div>
+
+                <div class="input-row">
+                    <div class="date-input-wrapper">
+                        <span class="input-label-small">Tenggat:</span>
+                        <input type="datetime-local" id="todo-date" required> 
+                    </div>
+
+                    <div class="priority-wrapper">
+                        <span class="input-label-small">Prioritas:</span>
+                        <select id="todo-priority">
+                            <option value="low">Low</option>
+                            <option value="medium" selected>Medium</option>
+                            <option value="high">High</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit">Tambah</button>
+                </div>
+            </form>
+            <p id="error-message" class="error-message"></p>
+        </section>
+
+        <section class="card calendar-card compact-calendar">
+            <div class="calendar-header">
+                <button id="prev-month" class="btn-cal-nav">❮</button>
+                <span id="calendar-month-year">Nov 2025</span>
+                <button id="next-month" class="btn-cal-nav">❯</button>
+            </div>
+            <div class="calendar-days-header">
+                <div>M</div><div>S</div><div>S</div><div>R</div><div>K</div><div>J</div><div>S</div>
+            </div>
+            
+            <div id="calendar-grid" class="calendar-grid">
+                </div>
+
+            <div id="daily-task-preview" class="daily-preview hidden">
+                <div class="daily-header">
+                    <strong id="daily-date-title">Tugas Tanggal Ini:</strong>
+                    <button onclick="closeDailyPreview()" class="btn-close-preview">×</button>
+                </div>
+                <ul id="daily-task-list" class="mini-list">
+                    </ul>
+            </div>
+        </section>
+
+    </div> <section class="controls-card">
+        <input type="text" id="search-input" placeholder="🔍 Cari tugas...">
+        <select id="sort-select">
+            <option value="manual">Urutan Manual</option>
+            <option value="date-nearest">Tenggat Terdekat</option>
+            <option value="priority">Prioritas</option>
+            <option value="created-newest">Dibuat Terbaru</option>
+        </select>
     </section>
 
-    <!-- Daftar tugas -->
-    <section class="card">
-      <h2>Daftar Tugas</h2>
+    <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">Semua</button>
+        <button class="filter-btn" data-filter="active">Aktif</button>
+        <button class="filter-btn" data-filter="completed">Selesai</button>
+    </div>
+
+    <section class="card list-container">
       <ul id="todo-list" class="todo-list">
-        <!-- Contoh item awal (boleh dihapus) -->
-        <li class="todo-item">
-          <span class="todo-text">Contoh tugas pertama</span>
-          <div class="todo-actions">
-            <button class="btn-complete">Selesai</button>
-            <button class="btn-delete">Hapus</button>
-          </div>
-        </li>
-      </ul>
+        </ul>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <small>&copy; 2025 • To-Do List Interaktif • Front-End Web Development</small>
-  </footer>
+  <div id="toast" class="toast hidden">
+      <span>Tugas dihapus.</span>
+      <button id="undo-btn">UNDO</button>
+  </div>
+
+  <div id="delete-modal" class="modal hidden">
+      <div class="modal-content icon-modal">
+          <h3>Hapus Tugas?</h3>
+          <p>Tugas ini akan hilang selamanya.</p>
+          <div class="modal-actions icon-actions">
+              <button id="cancel-delete" class="btn-modal-icon cancel" title="Batal">✕</button>
+              <button id="confirm-delete" class="btn-modal-icon delete" title="Hapus">🗑️</button>
+          </div>
+      </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
