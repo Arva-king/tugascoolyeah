@@ -2,126 +2,315 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>To-Do Elite</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="header-content">
-        <h1>To-Do Elite</h1>
-        <button id="theme-toggle" class="btn-theme" title="Ganti Tema">🌙</button>
-    </div>
-    <p class="subtitle">Kelola tugas, waktu, dan jadwal kalender.</p>
-  </header>
-
-  <main class="site-main">
+  
+  <div class="app-container">
     
-    <div class="progress-container card">
-        <div class="progress-header">
-            <span class="progress-label">Progress Harian</span>
-            <span id="progress-text">0/0 Selesai</span>
-        </div>
-        <div class="progress-bar-track">
-            <div id="progress-fill" class="progress-bar-fill"></div>
-        </div>
-    </div>
+    <aside class="sidebar">
+      <div class="brand">
+        <h2>✨ To-Do List</h2>
+      </div>
 
-    <div class="dashboard-row">
+      <div class="user-profile">
+        <div class="user-info">
+            <span id="greeting-text">Halo!</span>
+            <div class="xp-bar-container">
+                <div id="xp-fill" class="xp-fill"></div>
+            </div>
+            <div class="stats-row">
+                <small id="level-badge">Lvl 1</small>
+                <small id="streak-badge">🔥 0 Hari</small>
+            </div>
+        </div>
+      </div>
+
+      <nav class="nav-menu">
+        <div class="nav-section">UTAMA</div>
+        <button class="nav-item nav-btn active" onclick="switchFolder('all', this)">🏠 Semua Tugas</button>
+        <button class="nav-item nav-btn" onclick="switchFolder('overdue', this)">⏳ Tertunda</button>
+        <button class="nav-item nav-btn" onclick="switchFolder('completed', this)">✅ Terselesaikan</button>
+        <button class="nav-item nav-btn" onclick="switchFolder('today', this)">📅 Hari Ini</button>
+        <button class="nav-item nav-btn" onclick="switchFolder('trash', this)">🗑️ Sampah</button>
         
-        <section class="card form-card">
-            <h2>Buat Tugas Baru</h2>
-            <form id="todo-form" class="todo-form">
-                <div class="input-group">
-                    <input type="text" id="todo-input" placeholder="Nama tugas utama..." required>
-                    <textarea id="todo-desc" rows="2" placeholder="Tambahkan deskripsi/catatan (opsional)..."></textarea>
-                </div>
-                
-                <div class="tag-selection-container">
-                    <span class="tag-label">Label:</span>
-                    <div id="tag-container" class="tag-options"></div>
-                </div>
-
-                <div class="input-row">
-                    <div class="date-input-wrapper">
-                        <span class="input-label-small">Tenggat:</span>
-                        <input type="datetime-local" id="todo-date" required> 
-                    </div>
-
-                    <div class="priority-wrapper">
-                        <span class="input-label-small">Prioritas:</span>
-                        <select id="todo-priority">
-                            <option value="low">Low</option>
-                            <option value="medium" selected>Medium</option>
-                            <option value="high">High</option>
-                        </select>
-                    </div>
-                    
-                    <button type="submit">Tambah</button>
-                </div>
-            </form>
-            <p id="error-message" class="error-message"></p>
-        </section>
-
-        <section class="card calendar-card compact-calendar">
-            <div class="calendar-header">
-                <button id="prev-month" class="btn-cal-nav">❮</button>
-                <span id="calendar-month-year">Nov 2025</span>
-                <button id="next-month" class="btn-cal-nav">❯</button>
+        <div class="nav-section">
+            PROYEK 
+            <button class="btn-add-folder-small" onclick="createNewFolder()">+</button>
+        </div>
+        <div id="project-list">
             </div>
-            <div class="calendar-days-header">
-                <div>M</div><div>S</div><div>S</div><div>R</div><div>K</div><div>J</div><div>S</div>
-            </div>
-            
-            <div id="calendar-grid" class="calendar-grid">
-                </div>
 
-            <div id="daily-task-preview" class="daily-preview hidden">
-                <div class="daily-header">
-                    <strong id="daily-date-title">Tugas Tanggal Ini:</strong>
-                    <button onclick="closeDailyPreview()" class="btn-close-preview">×</button>
-                </div>
-                <ul id="daily-task-list" class="mini-list">
-                    </ul>
-            </div>
-        </section>
+        <div class="nav-section">ANALISIS DIRI</div>
+        <button class="nav-item nav-btn" onclick="openProgressModal()">📊 Cek Progres</button>
+      </nav>
 
-    </div> <section class="controls-card">
-        <input type="text" id="search-input" placeholder="🔍 Cari tugas...">
-        <select id="sort-select">
-            <option value="manual">Urutan Manual</option>
-            <option value="date-nearest">Tenggat Terdekat</option>
-            <option value="priority">Prioritas</option>
-            <option value="created-newest">Dibuat Terbaru</option>
-        </select>
-    </section>
+      <div class="sidebar-footer">
+          <button onclick="exportData()" class="btn-footer">
+              <span class="footer-icon">📥</span>
+              <span class="footer-text">Backup</span>
+          </button>
+          
+          <label for="import-file" class="btn-footer">
+              <span class="footer-icon">📤</span>
+              <span class="footer-text">Restore</span>
+          </label>
+          <input type="file" id="import-file" style="display:none" onchange="importData(this)">
+          
+          <button id="theme-toggle" class="btn-footer">
+              <span class="footer-icon">🌙</span>
+              <span class="footer-text">Tema</span>
+          </button>
+      </div>
+    </aside>
 
-    <div class="filter-buttons">
-        <button class="filter-btn active" data-filter="all">Semua</button>
-        <button class="filter-btn" data-filter="active">Aktif</button>
-        <button class="filter-btn" data-filter="completed">Selesai</button>
-    </div>
+    <main class="main-content">
+      
+      <div class="dashboard-header">
+          <div>
+              <h1 id="page-title">Semua Tugas</h1>
+              <span id="current-date-display" class="date-display">Memuat tanggal...</span>
+          </div>
+          
+          <button class="btn-pomodoro-trigger" onclick="togglePomodoro()">🍅 Fokus Mode</button>
+      </div>
 
-    <section class="card list-container">
-      <ul id="todo-list" class="todo-list">
-        </ul>
-    </section>
-  </main>
+      <div class="dashboard-row">
+          <section class="card form-card">
+              <h3>Buat Tugas Baru</h3>
+              <form id="todo-form" class="todo-form">
+                  <div class="input-group">
+                      <input type="text" id="todo-input" placeholder="Mau mengerjakan apa?" required>
+                      <textarea id="todo-desc" rows="1" placeholder="Catatan..."></textarea>
+                  </div>
+                  
+                  <div class="tag-selection-container">
+                      <div class="tag-header">
+                          <span class="tag-label">Label:</span>
+                          <button type="button" class="btn-tiny-add" onclick="addNewTag()">+ Baru</button>
+                      </div>
+                      <div id="tag-container" class="tag-options"></div>
+                  </div>
 
-  <div id="toast" class="toast hidden">
-      <span>Tugas dihapus.</span>
-      <button id="undo-btn">UNDO</button>
-  </div>
+                  <div class="input-row">
+                      <div class="select-wrapper">
+                          <span class="input-label-small">Folder:</span>
+                          <select id="todo-folder"><option value="Inbox">General</option></select>
+                      </div>
+                      <div class="select-wrapper">
+                          <span class="input-label-small">Ulangi:</span>
+                          <select id="todo-recurring">
+                              <option value="none">Sekali</option>
+                              <option value="daily">Harian</option>
+                              <option value="weekly">Mingguan</option>
+                          </select>
+                      </div>
+                      <div class="date-input-wrapper">
+                          <span class="input-label-small">Tenggat:</span>
+                          <input type="datetime-local" id="todo-date" required> 
+                      </div>
+                      <div class="priority-wrapper">
+                          <span class="input-label-small">Prioritas:</span>
+                          <select id="todo-priority">
+                              <option value="low">Low</option>
+                              <option value="medium" selected>Medium</option>
+                              <option value="high">High</option>
+                          </select>
+                      </div>
+                      <button type="submit" class="btn-submit">Tambah</button>
+                  </div>
+              </form>
+          </section>
 
-  <div id="delete-modal" class="modal hidden">
-      <div class="modal-content icon-modal">
-          <h3>Hapus Tugas?</h3>
-          <p>Tugas ini akan hilang selamanya.</p>
-          <div class="modal-actions icon-actions">
-              <button id="cancel-delete" class="btn-modal-icon cancel" title="Batal">✕</button>
-              <button id="confirm-delete" class="btn-modal-icon delete" title="Hapus">🗑️</button>
+          <section class="card calendar-card">
+              <div class="calendar-header">
+                  <button id="prev-month" class="btn-cal-nav">❮</button>
+                  <span id="calendar-month-year">...</span>
+                  <button id="next-month" class="btn-cal-nav">❯</button>
+              </div>
+              <div class="calendar-days-header">
+                  <div>M</div><div>S</div><div>S</div><div>R</div><div>K</div><div>J</div><div>S</div>
+              </div>
+              <div id="calendar-grid" class="calendar-grid"></div>
+              
+              <div id="daily-task-preview" class="daily-preview hidden">
+                  <div class="daily-header">
+                      <strong id="daily-date-title">Tanggal Ini:</strong>
+                      <button onclick="closeDailyPreview()" class="btn-calendar-back">
+                            Kembali
+                      </button>
+                  </div>
+                  <ul id="daily-task-list" class="mini-list"></ul>
+              </div>
+          </section>
+      </div> 
+
+      <div class="controls-bar">
+          <div class="search-box">
+              <input type="text" id="search-input" placeholder="🔍 Cari tugas...">
+          </div>
+          
+          <div class="filter-box">
+              <select id="sort-select">
+                  <option value="newest">Terbaru</option>
+                  <option value="priority">Prioritas</option>
+                  <option value="date">Tenggat Terdekat</option>
+              </select>
+          </div>
+
+          <div class="control-group">
+            <button class="btn-random-trigger" onclick="pickRandomTask()" title="Pilih Acak">
+                <span>🎲</span> Pilihkan!
+            </button>
           </div>
       </div>
+
+      <div class="progress-container">
+          <div class="progress-bar-track"><div id="progress-fill" class="progress-bar-fill"></div></div>
+          <small id="progress-text">0/0 Selesai</small>
+      </div>
+
+      <section class="list-container">
+        <ul id="todo-list" class="todo-list"></ul>
+      </section>
+
+    </main>
+  </div>
+
+  <div id="pomodoro-overlay" class="pomodoro-overlay hidden">
+      <div class="pomo-container">
+          <button class="btn-exit-focus" onclick="togglePomodoro()">✕ Keluar Fokus</button>
+          <h2 class="pomo-status" id="pomo-status-text">FOKUS</h2>
+          <div class="pomo-timer-huge" id="timer-display">25:00</div>
+          <div class="pomo-controls-huge">
+              <button id="btn-main-action" onclick="handleMainAction()">Mulai</button>
+              <button id="btn-reset" onclick="resetTimer()">Reset</button>
+          </div>
+          <p class="pomo-quote">"Satu langkah pada satu waktu."</p>
+      </div>
+  </div>
+
+  <div id="random-modal" class="modal hidden">
+      <div class="modal-content settings-card random-card">
+          <div class="random-header">
+              <span class="random-header-icon">🎁</span>
+              <h3>Takdir Memilih...</h3>
+          </div>
+          <div class="random-result-box">
+              <h2 id="random-result-text">Nama Tugas</h2>
+              <div id="random-result-meta" class="random-meta"></div>
+          </div>
+          <div class="modal-footer">
+              <button onclick="closeRandomModal()" class="btn-random-action">🚀 Siap Kerjakan!</button>
+          </div>
+      </div>
+  </div>
+
+  <div id="custom-input-modal" class="modal hidden">
+      <div class="modal-content settings-card">
+          <div class="modal-header">
+              <h3 id="input-modal-title">Input</h3>
+              <button onclick="closeInputModal()" class="btn-close-x">✕</button>
+          </div>
+          <div class="setting-group">
+              <label id="input-modal-label" class="setting-label">Nama:</label>
+              <input type="text" id="custom-input-field" class="modern-input" autocomplete="off">
+          </div>
+          <div class="modal-footer">
+              <button id="btn-confirm-input" class="btn-setting-close">Simpan</button>
+          </div>
+      </div>
+  </div>
+
+  <div id="universal-confirm-modal" class="modal hidden">
+      <div class="modal-content delete-card">
+          <div class="delete-icon-wrapper">
+              <span id="confirm-icon" class="delete-icon-emoji">📁</span>
+          </div>
+          <h3 id="confirm-title">Konfirmasi</h3>
+          <p id="confirm-desc" class="delete-text">Yakin?</p>
+          <div class="modal-actions delete-actions">
+              <button onclick="closeConfirmModal()" class="btn-modal-cancel">Batal</button>
+              <button id="btn-confirm-yes" class="btn-modal-confirm">Ya, Hapus</button>
+          </div>
+      </div>
+  </div>
+
+  <div id="progress-modal" class="modal hidden">
+      <div class="modal-content stats-card-wide">
+          <div class="modal-header">
+              <h3>📊 Laporan Produktivitas</h3>
+              <button onclick="closeProgressModal()" class="btn-close-x">✕</button>
+          </div>
+          
+          <div class="stats-grid-layout">
+              <div class="history-section">
+                  <div class="history-header">
+                      <button onclick="changeHistoryMonth(-1)" class="btn-mini-nav">❮</button>
+                      <h4 id="history-month-year">Loading...</h4>
+                      <button onclick="changeHistoryMonth(1)" class="btn-mini-nav">❯</button>
+                  </div>
+                  
+                  <div class="history-calendar-header">
+                      <div>M</div><div>S</div><div>S</div><div>R</div><div>K</div><div>J</div><div>S</div>
+                  </div>
+                  <div id="history-grid" class="history-grid"></div>
+
+                  <div class="history-legend">
+                      <div class="legend-item">
+                          <span class="dot success"></span> 
+                          <span>100%</span>
+                      </div>
+                      <div class="legend-item">
+                          <span class="dot warning"></span> 
+                          <span>Proses</span>
+                      </div>
+                      <div class="legend-item">
+                          <span class="dot danger"></span> 
+                          <span>Lewat</span>
+                      </div>
+                      <div class="legend-item">
+                          <span class="dot empty"></span> 
+                          <span>Kosong</span>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="stats-sidebar">
+                  <div class="stats-mini-box">
+                      <h5>Performa Bulan Ini</h5>
+                      <div class="stat-metrics-compact">
+                          <div class="metric-compact success">
+                              <span id="stat-completed">0</span>
+                              <small>Selesai</small>
+                          </div>
+                          <div class="metric-compact danger">
+                              <span id="stat-pending">0</span>
+                              <small>Tertunda</small>
+                          </div>
+                          <div class="metric-compact warning">
+                              <span id="stat-rate">0%</span>
+                              <small>Rate</small>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="day-detail-box">
+                      <h5 id="detail-date-title">Pilih tanggal untuk melihat detail</h5>
+                      <ul id="detail-task-list" class="detail-list">
+                          <li class="empty-state">Klik tanggal di kalender kiri 👈</li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <div id="toast" class="toast hidden">
+      <span id="toast-msg">Notifikasi</span>
+      <button id="undo-btn" class="hidden">UNDO</button>
   </div>
 
   <script src="script.js"></script>
