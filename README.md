@@ -60,7 +60,6 @@ tugascoolyeah/
 ├── style.css       # Styling visual, tema, animasi, dan responsivitas
 ├── script.js       # Logika inti, manajemen data, gamifikasi, dan kalender
 ├── README.md       # Dokumentasi proyek
-└── images/         # (Opsional) Aset gambar untuk dokumentasi
 ```
 💻 Cara Menjalankan
 Karena aplikasi ini berjalan di sisi klien (client-side), Anda tidak perlu menginstal Node.js, PHP, atau database server.
