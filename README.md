@@ -67,25 +67,10 @@ Karena aplikasi ini berjalan di sisi klien (client-side), Anda tidak perlu mengi
 
 Clone Repositori:
 ```bash
-git clone [https://github.com/Arva-king/tugascoolyeah.git](https://github.com/Arva-king/tugascoolyeah.git)
+git clone https://github.com/Arva-king/tugascoolyeah.git
 ```
 Buka Folder: Masuk ke direktori hasil clone.
 
 Jalankan: Cukup buka file index.html menggunakan browser modern (Chrome, Edge, Firefox, Safari).
 
 Tips: Untuk pengalaman pengembangan terbaik, gunakan ekstensi "Live Server" di VS Code.
-
-🤝 Kontribusi
-Proyek ini dikembangkan sebagai tugas Pemrograman Web. Masukan dan saran sangat dihargai.
-
-Fork repositori ini.
-
-Buat branch fitur baru (git checkout -b fitur-baru).
-
-Commit perubahan Anda (git commit -m 'Menambah fitur X').
-
-Push ke branch (git push origin fitur-baru).
-
-Buat Pull Request.
-
-Dibuat oleh Arva-king
