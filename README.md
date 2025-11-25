@@ -1,4 +1,6 @@
-# ✨ To-Do List
+# ✨ To-Do List Interaktif
+![Status](https://img.shields.io/badge/Status-Completed-success)
+![Technology](https://img.shields.io/badge/Tech-HTML%20%7C%20CSS%20%7C%20JS-blue)
 
 **To-Do List** adalah aplikasi manajemen tugas (*Task Manager*) berbasis web modern yang dirancang untuk meningkatkan produktivitas pribadi. Dibangun dengan pendekatan **Dashboard**, aplikasi ini menggabungkan daftar tugas tradisional dengan elemen **Gamifikasi**, **Manajemen Waktu (Pomodoro)**, dan **Analisis Visual**.
 
