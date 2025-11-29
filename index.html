@@ -10,7 +10,7 @@
 
   <aside class="sidebar">
       <div class="brand">
-        <h2>✨ To-Do List Interaktif</h2>
+        <h2>✨ To-Do Elite</h2>
       </div>
 
       <div class="user-profile">
@@ -28,11 +28,11 @@
 
       <nav class="nav-menu">
         <div class="nav-section">UTAMA</div>
-        <button class="nav-item nav-btn active" onclick="switchFolder('all', this)">🏠 Semua Tugas</button>
-        <button class="nav-item nav-btn" onclick="switchFolder('overdue', this)">⏳ Tertunda</button>
-        <button class="nav-item nav-btn" onclick="switchFolder('completed', this)">✅ Terselesaikan</button>
-        <button class="nav-item nav-btn" onclick="switchFolder('today', this)">📅 Hari Ini</button>
-        <button class="nav-item nav-btn" onclick="switchFolder('trash', this)">🗑️ Sampah</button>
+        <button class="nav-item filter-btn active" data-filter="all" onclick="switchFolder('all', this)">🏠 Semua Tugas</button>
+        <button class="nav-item filter-btn" data-filter="overdue" onclick="switchFolder('overdue', this)">⏳ Tertunda</button>
+        <button class="nav-item filter-btn" data-filter="completed" onclick="switchFolder('completed', this)">✅ Terselesaikan</button>
+        <button class="nav-item filter-btn" data-filter="today" onclick="switchFolder('today', this)">📅 Hari Ini</button>
+        <button class="nav-item filter-btn" data-filter="trash" onclick="switchFolder('trash', this)">🗑️ Sampah</button>
         
         <div class="nav-section">
             PROYEK 
@@ -141,11 +141,11 @@
               <div id="daily-task-preview" class="daily-preview hidden">
                   <div class="daily-header">
                       <strong id="daily-date-title">Tanggal Ini:</strong>
-                      <button onclick="closeDailyPreview()" class="btn-calendar-back">
-                            Kembali
-                      </button>
                   </div>
                   <ul id="daily-task-list" class="mini-list"></ul>
+                  <button onclick="closeDailyPreview()" class="btn-calendar-back" style="margin-top: 10px;">
+                        Kembali
+                  </button>
               </div>
           </section>
       </div> 
@@ -291,7 +291,7 @@
       <button id="undo-btn" class="hidden">UNDO</button>
   </div>
 
-  <div id="sidebar-overlay" class="sidebar-overlay hidden" onclick="toggleSidebar()"></div>
+  <div id="sidebar-overlay" class="sidebar-overlay" onclick="toggleSidebar()"></div>
   
   <script src="script.js"></script>
 </body>
