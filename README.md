@@ -95,7 +95,7 @@ LocalStorage API untuk persistensi data (tugas, folder, XP, setting).
 Logika Tanggal & Waktu kustom (bebas bug timezone).
 
 # 📂 Struktur Folder
-Bash
+```Bash
 
 tugascoolyeah/
 │
@@ -103,7 +103,8 @@ tugascoolyeah/
 ├── style.css       # Styling visual, tema, animasi, dan responsivitas
 ├── script.js       # Logika inti, manajemen data, gamifikasi, dan kalender
 ├── README.md       # Dokumentasi proyek
-💻 Cara Menjalankan
+```
+# 💻 Cara Menjalankan
 Karena aplikasi ini berjalan di sisi klien (client-side), Anda tidak perlu menginstal Node.js, PHP, atau database server.
 
 Clone Repositori:
