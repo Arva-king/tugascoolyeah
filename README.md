@@ -7,7 +7,7 @@ To-Do List adalah aplikasi manajemen tugas (Task Manager) berbasis web modern ya
 
 Aplikasi ini bersifat Client-Side penuh, berjalan langsung di browser tanpa perlu instalasi server, dan menyimpan data secara aman di perangkat pengguna (localStorage).
 
-🔗 Repositori: github.com/Arva-king/tugascoolyeah
+🔗 Repositori: [github.com/Arva-king/tugascoolyeah]
 
 ## 🚀 Fitur Unggulan
 # 📅 1. Dashboard & Manajemen Waktu
