@@ -1,119 +1,117 @@
-✨ To-Do List Interaktif (To-Do Elite)
-To-Do List Interaktif adalah aplikasi manajemen tugas berbasis web modern yang menggabungkan konsep Productivity Dashboard dengan elemen Gamifikasi. Aplikasi ini dirancang untuk membantu pengguna mengelola tugas sehari-hari, melacak kebiasaan, dan mempertahankan fokus menggunakan teknik Pomodoro.
+✨ To-Do List Interaktif
+![Status](https://img.shields.io/badge/Status-Completed-success)
+![Technology](https://img.shields.io/badge/Tech-HTML%20%7C%20CSS%20%7C%20JS-blue)
 
-Aplikasi ini berjalan sepenuhnya di sisi klien (Client-Side) menggunakan LocalStorage, sehingga data Anda tersimpan aman di browser tanpa memerlukan server atau koneksi internet.
+To-Do List adalah aplikasi manajemen tugas (Task Manager) berbasis web modern yang dirancang untuk meningkatkan produktivitas pribadi. Dibangun dengan pendekatan Dashboard, aplikasi ini menggabungkan daftar tugas tradisional dengan elemen Gamifikasi, Manajemen Waktu (Pomodoro), dan Analisis Visual.
+
+Aplikasi ini bersifat Client-Side penuh, berjalan langsung di browser tanpa perlu instalasi server, dan menyimpan data secara aman di perangkat pengguna (localStorage).
 
 🔗 Repositori: github.com/Arva-king/tugascoolyeah
 
 🚀 Fitur Unggulan
-1. 📂 Manajemen Tugas Komprehensif
-Sistem input tugas yang detail dan fleksibel:
+📅 1. Dashboard & Manajemen Waktu
+Dual-Pane Layout: Tata letak efisien dengan formulir input di kiri dan kalender interaktif di kanan.
 
-Detail Tugas: Judul, Deskripsi Catatan, dan Tenggat Waktu (Date/Time).
+Kalender Riwayat (Habit Tracker): Visualisasi produktivitas harian. Tanggal diwarnai otomatis:
 
-Prioritas: Indikator visual untuk prioritas Low, Medium, dan High.
+🟢 Hijau (Sempurna): Semua tugas selesai (100%).
 
-Organisasi:
+🟡 Kuning (Proses): Tugas sebagian selesai.
 
-Folder/Proyek: Kelompokkan tugas (misal: Kantor, Kuliah). Mendukung pembuatan, edit nama, dan hapus folder.
+🔴 Merah (Terlewat): Ada tugas yang belum selesai pada tanggal yang sudah lewat.
 
-Label (Tags): Sistem tagging warna-warni (bisa tambah custom tag).
+Preview Harian: Klik tanggal mana saja di kalender untuk melihat arsip tugas pada hari tersebut tanpa meninggalkan halaman utama.
 
-Tugas Berulang (Recurring): Opsi otomatis untuk mengulang tugas secara Harian atau Mingguan. Saat tugas selesai, sistem otomatis membuat duplikat untuk periode berikutnya.
+🍅 2. Fokus & Produktivitas
+Zen Mode Pomodoro: Timer layar penuh (Full Screen Overlay) dengan desain minimalis untuk fokus total.
 
-2. 🎮 Gamifikasi & Motivasi
-Membuat produktivitas terasa seperti bermain game RPG:
+Sistem Tugas Berulang (Recurring): Dukungan untuk tugas yang otomatis muncul kembali secara Harian atau Mingguan (logika tanggal otomatis diperbarui saat tugas diselesaikan).
 
-XP & Leveling: Dapatkan XP (Experience Points) setiap menyelesaikan tugas (+10 XP) atau sesi fokus (+50 XP). Naik level setiap 100 XP.
+Prioritas & Tenggat Waktu: Penanda visual untuk tingkat urgensi (Low, Medium, High) dan status keterlambatan (Overdue).
 
-Daily Streak: Penghitung berturut-turut hari pengguna aktif (Login harian).
+Random Picker: Fitur "Pilihkan Saya Tugas" untuk mengatasi decision fatigue.
 
-Sanksi XP: XP akan berkurang jika Anda membatalkan status "Selesai" pada tugas (-10 XP).
+🎮 3. Gamifikasi (Sistem XP & Level)
+Sistem poin yang terintegrasi langsung dengan tindakan pengguna di dalam kode:
 
-3. 📊 Dashboard & Analisis Visual
-Kalender Perencanaan: Navigasi tugas berdasarkan tanggal. Tanggal yang memiliki tugas akan ditandai di kalender.
+Mendapatkan XP:
 
-Laporan Produktivitas (Heatmap): Modal analisis khusus yang menampilkan riwayat kinerja bulanan:
++5 XP: Saat membuat tugas baru.
 
-🟢 Sempurna (100%): Semua tugas hari itu selesai.
++10 XP: Saat menyelesaikan tugas (Checklist).
 
-🟡 Proses: Sebagian tugas selesai.
++50 XP: Saat menyelesaikan sesi timer Pomodoro.
 
-🔴 Terlewat: Ada tugas yang belum selesai pada tanggal yang lewat.
+Sanksi XP:
 
-Progress Bar: Bar visual yang menunjukkan persentase penyelesaian tugas aktif saat ini.
+-10 XP: Jika membatalkan status selesai pada tugas (Uncheck).
 
-4. 🍅 Fokus Mode (Pomodoro)
-Zen Overlay: Tampilan layar penuh (fullscreen) untuk memblokir gangguan.
+Level Up: Naik level setiap kelipatan 100 XP.
 
-Timer Kustom: Default 25 menit dengan kontrol Start, Pause, dan Reset.
+Daily Streak: Menghitung hari berturut-turut pengguna aktif login ke aplikasi.
 
-Reward: Dapatkan bonus XP besar setelah menyelesaikan sesi fokus.
+📂 4. Organisasi & Manajemen Data
+Sistem Folder: Kelompokkan tugas ke dalam proyek (misal: Kantor, Kuliah). Mendukung pembuatan, edit nama, dan hapus folder.
 
-5. 🛠️ Alat Bantu & Utilitas
-Smart Sorting & Filter:
+Label Kustom (Tags): Tambahkan label warna-warni tak terbatas.
 
-Filter: Semua, Tertunda (Overdue), Terselesaikan, Hari Ini, dan Sampah.
+Tempat Sampah (Soft Delete): Tugas yang dihapus masuk ke folder "Sampah" terlebih dahulu.
 
-Sortir: Terbaru, Prioritas Tertinggi, atau Tenggat Terdekat.
+Pulihkan: Kembalikan tugas ke daftar aktif.
 
-Random Picker: Biarkan "Takdir Memilih" tugas mana yang harus dikerjakan selanjutnya jika Anda bingung.
+Hapus Permanen: Menghapus data selamanya dari memori.
 
-Sistem Sampah (Trash Bin): Soft delete (masuk sampah dulu) dengan opsi Pulihkan (Restore) atau Hapus Permanen.
+Undo: Notifikasi singkat (Toast) dengan tombol Undo saat tugas baru saja dihapus.
 
-Fitur Undo: Notifikasi "Toast" dengan tombol Undo saat menghapus tugas.
+Backup & Restore: Ekspor seluruh data ke file .json dan pulihkan kapan saja.
 
-6. ⚙️ Pengaturan & Data
-Backup & Restore: Ekspor seluruh data (Tugas, XP, Folder) ke file .json dan pulihkan kapan saja (berguna untuk pindah device).
+🎨 5. UI/UX Modern
+Dark Mode: Tema gelap terintegrasi yang nyaman di mata (menyimpan preferensi pengguna).
 
-Tema Gelap (Dark Mode): Dukungan native untuk mode gelap yang nyaman di mata.
+Smart Sorting: Urutkan tugas berdasarkan Terbaru, Prioritas, atau Tenggat Terdekat.
 
-💻 Struktur Kode
-Proyek ini dibangun menggunakan standar web modern tanpa framework berat:
+Filter Cerdas: Navigasi cepat antara tugas Aktif, Tertunda (Overdue), Hari Ini, dan Selesai.
 
-index.html: Struktur semantik aplikasi, memuat layout Sidebar, Dashboard, dan Modals.
+🛠️ Teknologi
+Proyek ini dibangun menggunakan standar web modern tanpa ketergantungan pada library atau framework eksternal yang berat.
 
-style.css:
+HTML5: Struktur semantik dan elemen modal dialog.
 
-Menggunakan CSS Variables (:root) untuk manajemen tema (Light/Dark).
+CSS3:
 
-Layout responsif dengan Grid dan Flexbox.
+CSS Grid & Flexbox untuk layout responsif.
 
-Sidebar collapsible (model laci) untuk tampilan mobile.
+CSS Variables untuk tema dinamis (Light/Dark).
 
-script.js:
+Animasi CSS murni (tanpa library animasi JS).
 
-State Management: Menggunakan objek appData tunggal yang disinkronkan ke localStorage.
+JavaScript (Vanilla ES6+):
 
-DOM Manipulation: Rendering dinamis untuk daftar tugas, kalender, dan tag.
+Manipulasi DOM tingkat lanjut.
 
-Date Logic: Penanganan logika tanggal untuk kalender dan fitur recurring.
+LocalStorage API untuk persistensi data (tugas, folder, XP, setting).
+
+Logika Tanggal & Waktu kustom (bebas bug timezone).
 
 📂 Struktur Folder
 Bash
 
 tugascoolyeah/
 │
-├── index.html      # Tampilan antarmuka utama
-├── style.css       # Desain visual, tema, dan animasi
-├── script.js       # Logika aplikasi, database lokal, dan gamifikasi
-└── README.md       # Dokumentasi ini
-🏁 Cara Menjalankan
-Karena aplikasi ini bersifat Client-Side Static, Anda tidak perlu menginstal Node.js, database, atau server backend.
+├── index.html      # Kerangka utama aplikasi (Dashboard Layout, Modals)
+├── style.css       # Styling visual, tema, animasi, dan responsivitas
+├── script.js       # Logika inti, manajemen data, gamifikasi, dan kalender
+├── README.md       # Dokumentasi proyek
+💻 Cara Menjalankan
+Karena aplikasi ini berjalan di sisi klien (client-side), Anda tidak perlu menginstal Node.js, PHP, atau database server.
 
-Clone atau Download repositori ini:
+Clone Repositori:
 
-```Bash
+Bash
 
 git clone https://github.com/Arva-king/tugascoolyeah.git
-```
-Buka Folder hasil download.
+Buka Folder: Masuk ke direktori hasil clone.
 
-Jalankan File: Klik dua kali pada index.html untuk membukanya di browser favorit Anda (Chrome, Edge, Firefox, Safari).
+Jalankan: Cukup buka file index.html menggunakan browser modern (Chrome, Edge, Firefox, Safari).
 
-Tips: Untuk pengalaman pengembangan terbaik (agar ikon dan font dimuat sempurna tanpa cache), disarankan menggunakan ekstensi "Live Server" di VS Code.
-
-🛡️ Keamanan Data
-Data Anda 100% Pribadi. Aplikasi ini menyimpan semua data tugas dan progres level di dalam localStorage browser Anda. Tidak ada data yang dikirim ke cloud atau server pihak ketiga.
-
-Jika Anda membersihkan cache browser (Clear Site Data), pastikan untuk melakukan Backup (Export Data) terlebih dahulu melalui menu di Sidebar.
+Tips: Untuk pengalaman pengembangan terbaik, gunakan ekstensi "Live Server" di VS Code.
