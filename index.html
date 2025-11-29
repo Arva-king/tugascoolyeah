@@ -3,16 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>To-Do List</title>
+  <title>To-Do List Interaktif</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  
-  <div class="app-container">
-    
-    <aside class="sidebar">
+
+  <aside class="sidebar">
       <div class="brand">
-        <h2>✨ To-Do List</h2>
+        <h2>✨ To-Do List Interaktif</h2>
       </div>
 
       <div class="user-profile">
@@ -40,8 +38,7 @@
             PROYEK 
             <button class="btn-add-folder-small" onclick="createNewFolder()">+</button>
         </div>
-        <div id="project-list">
-            </div>
+        <div id="project-list"></div>
 
         <div class="nav-section">ANALISIS DIRI</div>
         <button class="nav-item nav-btn" onclick="openProgressModal()">📊 Cek Progres</button>
@@ -64,14 +61,20 @@
               <span class="footer-text">Tema</span>
           </button>
       </div>
-    </aside>
+  </aside>
 
+  <div class="app-container">
     <main class="main-content">
       
       <div class="dashboard-header">
-          <div>
-              <h1 id="page-title">Semua Tugas</h1>
-              <span id="current-date-display" class="date-display">Memuat tanggal...</span>
+          <div class="header-left">
+              <button id="sidebar-toggle" class="btn-hamburger" onclick="toggleSidebar()">
+                  ☰
+              </button>
+              <div class="header-titles">
+                  <h1 id="page-title">Semua Tugas</h1>
+                  <span id="current-date-display" class="date-display">Memuat tanggal...</span>
+              </div>
           </div>
           
           <button class="btn-pomodoro-trigger" onclick="togglePomodoro()">🍅 Fokus Mode</button>
@@ -97,7 +100,7 @@
                   <div class="input-row">
                       <div class="select-wrapper">
                           <span class="input-label-small">Folder:</span>
-                          <select id="todo-folder"><option value="Inbox">General</option></select>
+                          <select id="todo-folder"><option value="Inbox">Inbox</option></select>
                       </div>
                       <div class="select-wrapper">
                           <span class="input-label-small">Ulangi:</span>
@@ -227,7 +230,7 @@
   <div id="universal-confirm-modal" class="modal hidden">
       <div class="modal-content delete-card">
           <div class="delete-icon-wrapper">
-              <span id="confirm-icon" class="delete-icon-emoji">📁</span>
+              <span id="confirm-icon" class="delete-icon-emoji">⚠️</span>
           </div>
           <h3 id="confirm-title">Konfirmasi</h3>
           <p id="confirm-desc" class="delete-text">Yakin?</p>
@@ -244,7 +247,6 @@
               <h3>📊 Laporan Produktivitas</h3>
               <button onclick="closeProgressModal()" class="btn-close-x">✕</button>
           </div>
-          
           <div class="stats-grid-layout">
               <div class="history-section">
                   <div class="history-header">
@@ -252,29 +254,15 @@
                       <h4 id="history-month-year">Loading...</h4>
                       <button onclick="changeHistoryMonth(1)" class="btn-mini-nav">❯</button>
                   </div>
-                  
                   <div class="history-calendar-header">
                       <div>M</div><div>S</div><div>S</div><div>R</div><div>K</div><div>J</div><div>S</div>
                   </div>
                   <div id="history-grid" class="history-grid"></div>
-
                   <div class="history-legend">
-                      <div class="legend-item">
-                          <span class="dot success"></span> 
-                          <span>100%</span>
-                      </div>
-                      <div class="legend-item">
-                          <span class="dot warning"></span> 
-                          <span>Proses</span>
-                      </div>
-                      <div class="legend-item">
-                          <span class="dot danger"></span> 
-                          <span>Lewat</span>
-                      </div>
-                      <div class="legend-item">
-                          <span class="dot empty"></span> 
-                          <span>Kosong</span>
-                      </div>
+                      <div class="legend-item"><span class="dot success"></span> <span>100%</span></div>
+                      <div class="legend-item"><span class="dot warning"></span> <span>Proses</span></div>
+                      <div class="legend-item"><span class="dot danger"></span> <span>Lewat</span></div>
+                      <div class="legend-item"><span class="dot empty"></span> <span>Kosong</span></div>
                   </div>
               </div>
 
@@ -282,21 +270,11 @@
                   <div class="stats-mini-box">
                       <h5>Performa Bulan Ini</h5>
                       <div class="stat-metrics-compact">
-                          <div class="metric-compact success">
-                              <span id="stat-completed">0</span>
-                              <small>Selesai</small>
-                          </div>
-                          <div class="metric-compact danger">
-                              <span id="stat-pending">0</span>
-                              <small>Tertunda</small>
-                          </div>
-                          <div class="metric-compact warning">
-                              <span id="stat-rate">0%</span>
-                              <small>Rate</small>
-                          </div>
+                          <div class="metric-compact success"><span id="stat-completed">0</span><small>Selesai</small></div>
+                          <div class="metric-compact danger"><span id="stat-pending">0</span><small>Tertunda</small></div>
+                          <div class="metric-compact warning"><span id="stat-rate">0%</span><small>Rate</small></div>
                       </div>
                   </div>
-
                   <div class="day-detail-box">
                       <h5 id="detail-date-title">Pilih tanggal untuk melihat detail</h5>
                       <ul id="detail-task-list" class="detail-list">
@@ -313,6 +291,8 @@
       <button id="undo-btn" class="hidden">UNDO</button>
   </div>
 
+  <div id="sidebar-overlay" class="sidebar-overlay hidden" onclick="toggleSidebar()"></div>
+  
   <script src="script.js"></script>
 </body>
 </html>
