@@ -347,7 +347,7 @@ button[type="submit"] {
 .setting-label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
 #btn-confirm-input { width: 100%; background: var(--primary-color); color: white; border: none; padding: 0.8rem; border-radius: 8px; font-weight: 600; cursor: pointer; transition: filter 0.2s; }
 
-/* Stats Modal */
+/* Progress Modal */
 .stats-card-wide { width: 95%; max-width: 750px !important; padding: 1.5rem !important; max-height: 90vh; overflow-y: auto; }
 .stats-grid-layout { display: grid; grid-template-columns: 1.3fr 1fr; gap: 1.5rem; }
 .history-section { padding: 0; border: none; background: transparent; }
@@ -418,6 +418,75 @@ button[type="submit"] {
     visibility: hidden !important;
     z-index: -1 !important;
 }
+
+.history-header { 
+    display: flex !important; 
+    justify-content: space-between !important; 
+    align-items: center !important; 
+    width: 100%; 
+    margin-bottom: 1rem; 
+    padding: 0 5px; 
+}
+
+.history-header h4 { 
+    margin: 0; 
+    font-size: 1rem; 
+    font-weight: 700; 
+    color: var(--text-primary); 
+    text-transform: capitalize; 
+}
+
+.btn-mini-nav { 
+    background: rgba(0, 0, 0, 0.05); /* Sedikit gelap agar terlihat */
+    border: 1px solid var(--border-color); 
+    color: var(--text-primary); 
+    width: 32px; 
+    height: 32px; 
+    border-radius: 8px; 
+    cursor: pointer; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    font-size: 0.9rem; 
+    transition: all 0.2s; 
+}
+
+.btn-mini-nav:hover { 
+    background: var(--primary-color); 
+    color: white; 
+    border-color: var(--primary-color); 
+}
+
+/* 2. Perbaiki Legenda/Keterangan Warna (Agar menyamping) */
+.history-legend {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px; 
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--border-color);
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.dot.success { background-color: var(--success-color); box-shadow: 0 0 5px rgba(16, 185, 129, 0.4); }
+.dot.warning { background-color: var(--warning-color); }
+.dot.danger { background-color: var(--danger-color); }
+.dot.empty { background-color: transparent; border: 1px solid var(--text-secondary); opacity: 0.5; }
 
 /* =========================================
    9. MEDIA QUERIES (RESPONSIVE)
@@ -503,3 +572,4 @@ button[type="submit"] {
     .pomo-status { font-size: 1rem; margin-bottom: 0.5rem; }
     .pomo-quote { font-size: 0.85rem; padding: 0 1rem; }
 }
+
